@@ -66,18 +66,18 @@ class baseCircle:
 
     #Collisions Broke. Will fix soon.
 
-    #def surface_distance(self, other, time):
-        #radiiAB = self.size + other.size
-        #posA = self.position + self.velocity * time + 0.5 * (self.accel * (time ** 2))
-        #posB = other.position + other.velocity * time + 0.5 * (other.accel * (time ** 2))
-        #posAB = pygame.math.Vector2().__abs__(posA) - pygame.math.Vector2().__abs__(posB)
-        #return posAB - radiiAB
+    def surface_distance(self, other, time):
+        radiiAB = self.size + other.size
+        posA = self.position + self.velocity * time + 0.5 * (self.accel * (time ** 2))
+        posB = other.position + other.velocity * time + 0.5 * (other.accel * (time ** 2))
+        posAB = abs(int(posA - posB))
+        return posAB - radiiAB
 
-    #def collide(self, other):
-        #if self.surface_distance(other, dtime) <= 0:
-            #collision_vector = self.position - other.position
+    def collide(self, other):
+        if self.surface_distance(other, dtime) <= 0:
+            collision_vector = self.position - other.position
             #collision_vector.normalize()
-            #self.velocity = self.velocity.reflect(collision_vector)
+            self.velocity = self.velocity.reflect(collision_vector)
 
 
 
